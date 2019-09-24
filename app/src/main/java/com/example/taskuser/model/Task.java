@@ -1,4 +1,4 @@
-package com.example.taskuser.Model;
+package com.example.taskuser.model;
 
 import java.sql.Time;
 import java.util.Date;

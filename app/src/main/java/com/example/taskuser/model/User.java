@@ -1,10 +1,10 @@
-package com.example.taskuser.Model;
+package com.example.taskuser.model;
 
 import java.util.List;
 import java.util.UUID;
 
 public class User {
-    //private UUID userId;
+    private UUID userId;
     private String userName;
     private int password;
     private List<Task> taskList;

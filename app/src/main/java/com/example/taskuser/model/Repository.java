@@ -1,7 +1,11 @@
-package com.example.taskuser.Model;
+package com.example.taskuser.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 public class Repository {
@@ -41,7 +45,9 @@ public class Repository {
         }
         return false;
     }
-    public boolean checkUserExist(String userName) {
+
+
+   /* public boolean checkUserExist(String userName) {
 
         for (User user : userList) {
             if (user.getUserName().equals(userName)) {
@@ -49,26 +55,29 @@ public class Repository {
             }
         }
         return false;
-    }
+    }*/
 
     ////////// Insert , Edit , Delete task's method
+
+    public UUID checkUserExist(String userName) {
+
+        for (User user : userList) {
+            if (user.getUserName().equals(userName)) {
+                return user.getUserId();
+            }
+        }
+        return null;
+    }
 
     public void setTaskList(List<Task> taskList) {
         this.taskList = taskList;
     }
 
-    public Task getTask(UUID idTask)
-    {
-        for(Task task:taskList)
-            if (task.getTaskID().equals(idTask))
-                return task;
-            return null;
-    }
 
     public List<Task> getTaskList(UUID userId)
     {
         for (User user:userList)
-            if(user.getUserId().equals(userId))
+            if(user.getUserId()==(userId))
                 return user.getTaskList();
             return null;
     }
@@ -109,7 +118,45 @@ public class Repository {
         return null;
     }
     private Repository() {
-            userList = new ArrayList<>();
+        this.taskList=new ArrayList<>();
+        for (int i = 0; i <100 ; i++) {
+            Task newtask=new Task();
+            newtask.setTitle("Project "+(i+1));
+            newtask.setDescription("First Exercies");
+            newtask.setState(randomState());
+            taskList.add(newtask);
+        }
+        userList = new ArrayList<>();
+        User user=new User();
+        user.setUserName("Admin");
+        user.setTaskList(taskList);
+        userList.add(user);
     }
 
+    //this method is for test
+    private TaskState randomState()
+    {
+        Random random=new Random();
+        int randomState;
+        TaskState taskState = TaskState.Todo;
+        randomState=random.nextInt(3)+1;
+        //Start Switch Task State
+        switch (randomState)
+        {
+            case 1:{
+                taskState= (TaskState.Todo);
+                break;
+            }
+            case 2:{
+                taskState= (TaskState.Doing);
+                break;
+            }
+            case 3:{
+                taskState= (TaskState.Done);
+                break;
+            }
+        }
+        //end Switch Task State
+        return taskState;
+    }
 }
