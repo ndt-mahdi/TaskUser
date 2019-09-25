@@ -14,6 +14,7 @@
         android:layout_marginTop="50dp"
         android:background="@android:color/holo_blue_light" />
 
+
     <!-- TODO: Update blank fragment layout -->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

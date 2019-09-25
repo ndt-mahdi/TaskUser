@@ -6,14 +6,23 @@ import java.util.UUID;
 
 public class Task {
     private UUID taskID;
-    //private UUID userIdForeign;
+
+
+
+    private UUID userIdForeign;
     private  String title;
     private String description;
     private  TaskState state;
-    private int iconState;
     private Date dateTask;
     private Time timeTask;
 
+    public UUID getUserIdForeign() {
+        return userIdForeign;
+    }
+
+    public void setUserIdForeign(UUID userIdForeign) {
+        this.userIdForeign = userIdForeign;
+    }
     public UUID getTaskID() {
         return taskID;
     }
@@ -39,14 +48,6 @@ public class Task {
 
     public void setState(TaskState state) {
         this.state = state;
-    }
-
-    public int getIconState() {
-        return iconState;
-    }
-
-    public void setIconState(int iconState) {
-        this.iconState = iconState;
     }
 
     public Date getDateTask() {

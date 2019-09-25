@@ -9,8 +9,9 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:orientation="vertical"
+    android:layout_marginTop="2dp"
     app:cardCornerRadius="10dp"
-    app:cardElevation="10dp"
+    app:cardElevation="2dp"
     app:cardBackgroundColor="#66004FCF">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,8 +38,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
             android:text="TextView"
             android:textColor="#80FFFFFF"
             android:textSize="14sp"
@@ -46,26 +47,28 @@
             app:layout_constraintStart_toStartOf="@+id/title_text_view"
             app:layout_constraintTop_toBottomOf="@+id/title_text_view" />
 
-        <ImageView
-            android:id="@+id/title_image_View"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardView_IconState"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="24dp"
-            android:contentDescription="@string/title_name_logo"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="#6FF805BA"
+            app:cardCornerRadius="100dp"
+            app:cardElevation="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/title_text_view"
-            app:srcCompat="@color/colorAccent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/title_icon_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="T"
+            android:textColor="#FFFFFFFF"
             android:textSize="36sp"
-            android:textColor="@color/cardview_light_background"
-            app:layout_constraintBottom_toBottomOf="@+id/title_image_View"
-            app:layout_constraintEnd_toEndOf="@+id/title_image_View"
-            app:layout_constraintStart_toStartOf="@+id/title_image_View"
-            app:layout_constraintTop_toTopOf="@+id/title_image_View" />
+            app:layout_constraintBottom_toBottomOf="@+id/cardView_IconState"
+            app:layout_constraintEnd_toEndOf="@+id/cardView_IconState"
+            app:layout_constraintStart_toStartOf="@+id/cardView_IconState"
+            app:layout_constraintTop_toTopOf="@+id/cardView_IconState" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

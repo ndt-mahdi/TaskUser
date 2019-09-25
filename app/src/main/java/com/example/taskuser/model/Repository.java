@@ -10,8 +10,8 @@ import java.util.UUID;
 
 public class Repository {
     private static Repository ourInstance;
-    private List<User> userList;
-    private List<Task> taskList;
+    private List<User> userList=new ArrayList<>();
+    private List<Task> taskList=new ArrayList<>();
 
 
     public static Repository getInstance() {
@@ -21,7 +21,7 @@ public class Repository {
     }
     public User getUser(UUID userId) {
         for (User user : userList)
-            if (user.getUserId().equals(userId))
+            if (user.getUserId()==(userId))
                 return user;
 
         return null;
@@ -47,7 +47,7 @@ public class Repository {
     }
 
 
-   /* public boolean checkUserExist(String userName) {
+/*    public boolean checkUserExist(String userName) {
 
         for (User user : userList) {
             if (user.getUserName().equals(userName)) {
@@ -59,7 +59,7 @@ public class Repository {
 
     ////////// Insert , Edit , Delete task's method
 
-    public UUID checkUserExist(String userName) {
+   public UUID checkUserExist(String userName) {
 
         for (User user : userList) {
             if (user.getUserName().equals(userName)) {
@@ -76,10 +76,11 @@ public class Repository {
 
     public List<Task> getTaskList(UUID userId)
     {
-        for (User user:userList)
-            if(user.getUserId()==(userId))
-                return user.getTaskList();
-            return null;
+        List<Task> newTask=new ArrayList<>();
+        for (Task task:taskList)
+            if(getUser(userId).equals(task.getUserIdForeign()))
+                newTask.add(task);
+                return newTask;
     }
     public void insertTask(Task task)
     {
@@ -96,7 +97,6 @@ public class Repository {
         newTask.setDescription(task.getDescription());
         newTask.setState(task.getState());
         newTask.setTimeTask(task.getTimeTask());
-        newTask.setIconState(task.getIconState());
     }
 
     public void deleteTask(Task Task) throws Exception {
@@ -118,21 +118,35 @@ public class Repository {
         return null;
     }
     private Repository() {
-        this.taskList=new ArrayList<>();
+
+
+        User user=new User();
+        user.setUserName("Admin");
+        user.setPassword(12345);
+        addUser(user);
+        user.setUserName("mahdi");
+        user.setPassword(42245);
+        addUser(user);
+
+
         for (int i = 0; i <100 ; i++) {
             Task newtask=new Task();
             newtask.setTitle("Project "+(i+1));
             newtask.setDescription("First Exercies");
             newtask.setState(randomState());
-            taskList.add(newtask);
+            newtask.setUserIdForeign(randomUser());
+            insertTask(newtask);
         }
-        userList = new ArrayList<>();
-        User user=new User();
-        user.setUserName("Admin");
-        user.setTaskList(taskList);
-        userList.add(user);
+
     }
 
+    private UUID randomUser()
+    {
+        Random random=new Random();
+        int randomUserIndex;
+        randomUserIndex=random.nextInt(userList.size());
+        return userList.get(randomUserIndex).getUserId();
+    }
     //this method is for test
     private TaskState randomState()
     {
@@ -151,12 +165,13 @@ public class Repository {
                 taskState= (TaskState.Doing);
                 break;
             }
-            case 3:{
+          /*  case 3:{
                 taskState= (TaskState.Done);
                 break;
-            }
+            }*/
         }
         //end Switch Task State
         return taskState;
     }
+
 }
