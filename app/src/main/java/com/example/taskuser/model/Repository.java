@@ -1,5 +1,8 @@
 package com.example.taskuser.model;
 
+
+import android.util.Log;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,28 +13,29 @@ import java.util.UUID;
 
 public class Repository {
     private static Repository ourInstance;
-    private List<User> userList=new ArrayList<>();
-    private List<Task> taskList=new ArrayList<>();
+    private List<User> userList = new ArrayList<>();
+    private List<Task> taskList = new ArrayList<>();
 
 
     public static Repository getInstance() {
-        if(ourInstance==null)
-            ourInstance=new Repository();
+        if (ourInstance == null)
+            ourInstance = new Repository();
         return ourInstance;
     }
+
     public User getUser(UUID userId) {
         for (User user : userList)
-            if (user.getUserId()==(userId))
+            if (user.getUserId() == (userId))
                 return user;
 
         return null;
     }
-    public boolean addUser(User user){
+
+    public boolean addUser(User user) {
         if (!userList.contains(user.getUserName())) {
             this.userList.add(user);
             return true;
-        }
-        else
+        } else
             return false;
 
     }
@@ -39,7 +43,7 @@ public class Repository {
     public boolean login(String userName, int password) {
 
         for (User user : userList) {
-            if (user.getUserName().equals(userName) && user.getPassword()==(password)) {
+            if (user.getUserName().equals(userName) && user.getPassword() == (password)) {
                 return true;
             }
         }
@@ -47,19 +51,9 @@ public class Repository {
     }
 
 
-/*    public boolean checkUserExist(String userName) {
-
-        for (User user : userList) {
-            if (user.getUserName().equals(userName)) {
-                return true;
-            }
-        }
-        return false;
-    }*/
-
     ////////// Insert , Edit , Delete task's method
 
-   public UUID checkUserExist(String userName) {
+    public UUID checkUserExist(String userName) {
 
         for (User user : userList) {
             if (user.getUserName().equals(userName)) {
@@ -74,16 +68,17 @@ public class Repository {
     }
 
 
-    public List<Task> getTaskList(UUID userId)
-    {
-        List<Task> newTask=new ArrayList<>();
-        for (Task task:taskList)
-            if(getUser(userId).equals(task.getUserIdForeign()))
+    public List<Task> getTaskList(UUID userId) {
+        List<Task> newTask = new ArrayList<>();
+        for (Task task : taskList) {
+            if (getUser(userId).getUserId().equals(task.getUserIdForeign())) {
                 newTask.add(task);
-                return newTask;
+            }
+        }
+        return newTask;
     }
-    public void insertTask(Task task)
-    {
+
+    public void insertTask(Task task) {
         taskList.add(task);
     }
 
@@ -106,6 +101,7 @@ public class Repository {
 
         taskList.remove(oldTask);
     }
+
     public int getPositionTask(UUID uuid) {
         return taskList.indexOf(getTask(uuid));
     }
@@ -117,22 +113,25 @@ public class Repository {
 
         return null;
     }
+
     private Repository() {
 
 
-        User user=new User();
+        User user = new User();
         user.setUserName("Admin");
         user.setPassword(12345);
         addUser(user);
+
+        user = new User();
         user.setUserName("mahdi");
         user.setPassword(42245);
         addUser(user);
 
 
-        for (int i = 0; i <100 ; i++) {
-            Task newtask=new Task();
-            newtask.setTitle("Project "+(i+1));
-            newtask.setDescription("First Exercies");
+        for (int i = 0; i < 100; i++) {
+            Task newtask = new Task();
+            newtask.setTitle("Project " + (i + 1));
+            newtask.setDescription("This App Is For Test");
             newtask.setState(randomState());
             newtask.setUserIdForeign(randomUser());
             insertTask(newtask);
@@ -140,32 +139,30 @@ public class Repository {
 
     }
 
-    private UUID randomUser()
-    {
-        Random random=new Random();
+    private UUID randomUser() {
+        Random random = new Random();
         int randomUserIndex;
-        randomUserIndex=random.nextInt(userList.size());
+        randomUserIndex = random.nextInt(userList.size());
         return userList.get(randomUserIndex).getUserId();
     }
+
     //this method is for test
-    private TaskState randomState()
-    {
-        Random random=new Random();
+    private TaskState randomState() {
+        Random random = new Random();
         int randomState;
         TaskState taskState = TaskState.Todo;
-        randomState=random.nextInt(3)+1;
+        randomState = random.nextInt(3) + 1;
         //Start Switch Task State
-        switch (randomState)
-        {
-            case 1:{
-                taskState= (TaskState.Todo);
+        switch (randomState) {
+            case 1: {
+                taskState = (TaskState.Todo);
                 break;
             }
-            case 2:{
-                taskState= (TaskState.Doing);
+            case 2: {
+                taskState = (TaskState.Doing);
                 break;
             }
-          /*  case 3:{
+           /*case 3:{
                 taskState= (TaskState.Done);
                 break;
             }*/

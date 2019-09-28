@@ -27,6 +27,9 @@ public class User {
         this.password = password;
     }
 
+    public User() {
+        this.userId = UUID.randomUUID();
+    }
 
 
     @Override

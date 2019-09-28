@@ -1,10 +1,9 @@
 package com.example.taskuser.model;
 
-import java.sql.Time;
-import java.util.Date;
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Task {
+public class Task  implements Serializable {
     private UUID taskID;
 
 
@@ -13,8 +12,8 @@ public class Task {
     private  String title;
     private String description;
     private  TaskState state;
-    private Date dateTask;
-    private Time timeTask;
+    private String dateTask;
+    private String timeTask;
 
     public UUID getUserIdForeign() {
         return userIdForeign;
@@ -50,19 +49,19 @@ public class Task {
         this.state = state;
     }
 
-    public Date getDateTask() {
+    public String getDateTask() {
         return dateTask;
     }
 
-    public void setDateTask(Date dateTask) {
+    public void setDateTask(String dateTask) {
         this.dateTask = dateTask;
     }
 
-    public Time getTimeTask() {
+    public String getTimeTask() {
         return timeTask;
     }
 
-    public void setTimeTask(Time timeTask) {
+    public void setTimeTask(String timeTask) {
         this.timeTask = timeTask;
     }
 

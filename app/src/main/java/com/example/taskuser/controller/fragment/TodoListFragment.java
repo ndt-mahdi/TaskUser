@@ -38,6 +38,11 @@ public class TodoListFragment extends SingleFragmentRecycler {
             return newTaskList;
 
     }
+
+    @Override
+    public TaskState viewPagerTaskState() {
+        return TaskState.Todo;
+    }
 }
 
 

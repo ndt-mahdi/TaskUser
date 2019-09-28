@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">TaskUser</string>
     <string name="title_name_logo">title_name_logo</string>
+    <string name="no_task_for_this_user">No Task For This User</string>
+    <string name="not_found_task">Not_Found_Task</string>
+    <string name="not_found_task_for_this_user">Not Found Task For This User</string>
+    <string name="new_task">New Task</string>
+    <string name="save">Save</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
 </resources>

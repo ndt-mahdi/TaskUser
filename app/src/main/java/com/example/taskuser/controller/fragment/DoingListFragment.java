@@ -41,4 +41,9 @@ public class DoingListFragment extends SingleFragmentRecycler {
         return newTaskList;
 
     }
+
+    @Override
+    public TaskState viewPagerTaskState() {
+        return TaskState.Doing;
+    }
 }

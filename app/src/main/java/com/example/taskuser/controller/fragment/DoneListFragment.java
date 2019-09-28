@@ -2,6 +2,7 @@ package com.example.taskuser.controller.fragment;
 
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.fragment.app.Fragment;
 
@@ -40,5 +41,10 @@ public class DoneListFragment extends SingleFragmentRecycler {
         }
         return newTaskList;
 
+    }
+
+    @Override
+    public TaskState viewPagerTaskState() {
+        return TaskState.Done;
     }
 }
