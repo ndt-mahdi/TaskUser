@@ -1,9 +1,8 @@
 package com.example.taskuser.controller.fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,9 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -23,24 +20,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.taskuser.R;
-import com.example.taskuser.controller.ViewPagerAdapter;
+import com.example.taskuser.controller.MainActivity;
+import com.example.taskuser.controller.fragment.Dialog.NewTaskFragment;
 import com.example.taskuser.model.Repository;
 import com.example.taskuser.model.Task;
 import com.example.taskuser.model.TaskState;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.sql.Time;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.Random;
 import java.util.UUID;
 
 public abstract class SingleFragmentRecycler extends Fragment {
 
     public static final String NEW_TASK_FRAGMENT_TAG = "New_Task_Fragment";
     public static final int REQUEST_CODE = 0;
+    public static final String EXTER_USER_ID = "com.example.taskuser.controller.fragment.user_id";
     private RecyclerView mRecyclerView;
     private TextView mNotFoundTaskTextView;
     private CardView mCardView, iconState, cardView_ItemList;
@@ -53,6 +48,12 @@ public abstract class SingleFragmentRecycler extends Fragment {
 
     public abstract TaskState viewPagerTaskState();
 
+    public static Intent newIntent(Context context,UUID id)
+    {
+      Intent intent= new Intent(context, MainActivity.class);
+      intent.putExtra(EXTER_USER_ID,id);
+      return intent;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
