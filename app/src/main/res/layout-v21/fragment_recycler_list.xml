@@ -1,37 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recycler_list"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".controller.fragment.DoneListFragment">
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_Btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/recycler_view_task"
-        android:layout_alignBottom="@+id/recycler_view_task"
-        android:layout_gravity="bottom|end"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@android:color/holo_blue_bright"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@android:drawable/stat_notify_more"
-        app:backgroundTint="@color/colorPrimary"
-        app:rippleColor="@color/design_default_color_primary" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_task"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
-        android:background="@android:color/holo_blue_light" />
+        android:layout_marginTop="5dp"
+        android:background="@android:color/holo_blue_light">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/not_found_task_CardView"
@@ -48,28 +32,47 @@
         android:background="@mipmap/ic_background_background"
         app:cardBackgroundColor="@android:color/holo_blue_bright"
         app:cardCornerRadius="15dp"
-        app:cardElevation="5dp"
-        android:visibility="gone">
-
-        <ImageView
-            android:id="@+id/not_found_task_ImageView"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_margin="10dp"
-            android:contentDescription="@string/not_found_task"
-            android:src="@mipmap/ic_background_background" />
+        app:cardElevation="5dp">
 
         <TextView
             android:id="@+id/not_found_task_textView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginStart="30dp"
             android:layout_marginTop="200dp"
             android:layout_marginBottom="10dp"
             android:text="@string/not_found_task_for_this_user"
             android:textColor="#ffffffff"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/image_cardview"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/recycler_view_task"
+            android:layout_alignEnd="@+id/recycler_view_task"
+            android:layout_alignBottom="@+id/recycler_view_task"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="9dp"
+            android:layout_marginBottom="200dp"
+            android:background="@mipmap/ic_background_background"
+            app:cardBackgroundColor="@android:color/background_light"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="5dp">
+
+            <ImageView
+                android:id="@+id/not_found_task_ImageView"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/not_found_task"
+                android:src="@mipmap/ic_background_background" />
+        </com.google.android.material.card.MaterialCardView>
     </com.google.android.material.card.MaterialCardView>
+
 
     <!-- TODO: Update blank fragment layout -->
 

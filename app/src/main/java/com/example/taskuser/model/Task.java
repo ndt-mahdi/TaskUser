@@ -3,15 +3,12 @@ package com.example.taskuser.model;
 import java.io.Serializable;
 import java.util.UUID;
 
-public class Task  implements Serializable {
+public class Task implements Serializable {
     private UUID taskID;
-
-
-
     private UUID userIdForeign;
-    private  String title;
+    private String title;
     private String description;
-    private  TaskState state;
+    private TaskState state;
     private String dateTask;
     private String timeTask;
 
@@ -22,9 +19,11 @@ public class Task  implements Serializable {
     public void setUserIdForeign(UUID userIdForeign) {
         this.userIdForeign = userIdForeign;
     }
+
     public UUID getTaskID() {
         return taskID;
     }
+
     public String getTitle() {
         return title;
     }

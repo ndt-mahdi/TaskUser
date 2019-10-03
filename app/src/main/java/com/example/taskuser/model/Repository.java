@@ -94,8 +94,8 @@ public class Repository {
         newTask.setTimeTask(task.getTimeTask());
     }
 
-    public void deleteTask(Task Task) throws Exception {
-        Task oldTask = getTask(Task.getTaskID());
+    public void deleteTask(Task task) throws Exception {
+        Task oldTask = getTask(task.getTaskID());
         if (oldTask == null)
             throw new Exception("This Task does not exist!!!");
 

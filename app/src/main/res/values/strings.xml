@@ -5,7 +5,16 @@
     <string name="not_found_task">Not_Found_Task</string>
     <string name="not_found_task_for_this_user">Not Found Task For This User</string>
     <string name="new_task">New Task</string>
+    <string name="edit_task">Edit Task</string>
     <string name="save">Save</string>
+    <string name="Update">Update</string>
+    <string name="Delete">delete</string>
+    <string name="Cancel">cancel</string>
+    <string name="TodoRadioButton">Todo</string>
+    <string name="DoingRadioButton">Doing</string>
+    <string name="DoneRadioButton">Done</string>
+
+
 
 
 </resources>
